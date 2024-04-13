@@ -1,0 +1,212 @@
+.App {
+    height: 100vh;
+    padding: 0px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.profile{
+    display: flex;
+    gap: 10px;
+}
+
+.profileInfo{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+img{
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    background-color: rgb(191, 240, 224);
+}
+
+.delete{
+    border: none;
+    padding: 3px 6px;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid rgb(245, 191, 191);
+    color: rgb(242, 100, 100);
+}
+
+.edit{
+    border: none;
+    padding: 3px 6px;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid rgb(204, 204, 243);
+    color: rgb(139, 139, 234);
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    
+}
+.signup-body {
+    background-image: url('../src/images/image.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+input{
+    width: 250px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+#checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+.formButton{
+    border: none;
+    padding: 10px;
+    background-color: rgb(241, 184, 133);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center; /* Center align vertically */
+    height: 100vh; /* Take up full viewport height */
+    background-image: url('../src/images/welcome3.jpg'); /* Path to your background image */
+    background-size: cover; /* Cover the entire element */
+    background-position: center; /* Center the background image */
+    height: 50vh; /* Take up full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(16, 15, 15); /* Set text color to white for better contrast */
+}
+
+.welcomeButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Center align horizontally */
+}
+
+.welcomeButton,
+.welcomeSignupButton {
+    border: none;
+    padding: 10px;
+    background-color: #41a3f4; /* Change button background color */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.welcomeButton:hover,
+.welcomeSignupButton:hover {
+    opacity: 0.8; /* Dim button on hover */
+}
+.signUpButtons {
+    display : flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.loginButtons {
+    display : flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #41a3f4;
+    outline: none;
+}
+
+.form-control-file {
+    display: block;
+    margin-top: 5px;
+}
+
+.signUpButtons .btn {
+    margin-right: 10px;
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal-header,
+.modal-footer {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.modal-footer {
+    border-top: 1px solid #ddd;
+}
+
+.modal-footer .btn {
+    margin: 0 10px;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff6347;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+input{
+    width: 250px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+#checkbox{
+    width: 20px;
+    height: 20px;
+}
