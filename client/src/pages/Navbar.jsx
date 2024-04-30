@@ -25,7 +25,7 @@ const Navbar = () => {
         if (Search === '') alert('Enter anything')
         else sethide(true)
         setoncl(Search)
-        filteraa = users.filter((e) => e.UserName === oncl)
+        filteraa = users.filter((e) => e.UserName.toLowerCase().includes(oncl.toLowerCase()) || e.Location.toLowerCase().includes(oncl.toLowerCase()));
         console.log(filteraa)
     }
     useEffect(() => {
@@ -55,7 +55,7 @@ const Navbar = () => {
                             users ?
 
 
-                                users?.filter((e) => e.UserName === oncl).map((e) => {
+                                users?.filter((e) => e.UserName.toLowerCase().includes(oncl.toLowerCase()) || e.Location.toLowerCase().includes(oncl.toLowerCase())).map((e) => {
                                     return (
                                         <>
 

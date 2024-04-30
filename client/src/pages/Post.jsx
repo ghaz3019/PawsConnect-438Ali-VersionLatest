@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -17,27 +16,25 @@ const Post = () => {
   });
 
   const [pets, setPets] = useState([]);
+  const [filePreview, setFilePreview] = useState(null);
 
-    useEffect(() => {
-        fetchPetsByUserId(UserID).then(pets => {
-            setPets(pets || []);
-        });
-    }, [UserID]);
+  useEffect(() => {
+    fetchPetsByUserId(UserID).then(pets => {
+      setPets(pets || []);
+    });
+  }, [UserID]);
 
-    axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true;
 
   const fetchPetsByUserId = async (userId) => {
     try {
-      //fetch valid pets to tag to poulate dropdown menu
       const response = await axios.get(`http://localhost:8800/pets/${userId}`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   };
 
-  //handler for checkbox
   const handleCheck = (event) => {
     const isCheckbox = event.target.type === "checkbox";
     setPost({
@@ -48,7 +45,6 @@ const Post = () => {
     });
   };
 
-  //handler for rest of input fields
   const handleChange = (event) => {
     const { name, value, options } = event.target;
 
@@ -63,13 +59,23 @@ const Post = () => {
     }
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setPost((prevPost) => ({ ...prevPost, photo: file }));
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFilePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleClick = async (e) => {
     e.preventDefault();
-    //have to use FormData to properly handle file uploads, essentially just another ~req.body~
     const formData = new FormData();
     formData.append("userID", post.userID);
     formData.append("caption", post.caption);
-    formData.append("photo", post.photo); // 'photo' is the key that the server will use to access the file
+    formData.append("photo", post.photo);
     formData.append("visibility", post.visibility);
     formData.append("taggedPets", post.taggedPets.join(", "));
     try {
@@ -82,26 +88,25 @@ const Post = () => {
           },
         }
       );
-      console.log(postResponse.data);
       navigate("/profile/" + UserName);
     } catch (err) {
       console.log(err);
     }
   };
-  
-  const handleFileChange = (event) => {
-    setPost((prevPost) => ({ ...prevPost, photo: event.target.files[0] }));
-  };
 
   return (
-    <div className="form">
-      <h1>Create a Post</h1>
-      <input type="file" onChange={handleFileChange} />
+    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+      <h1 className="text-3xl font-bold mb-6 text-center">Create a Post</h1>
+      <input type="file" onChange={handleFileChange} className="mb-4" />
+      {filePreview && (
+        <img src={filePreview} alt="Preview" className="w-full mb-4" />
+      )}
       <select
         multiple
         value={post.taggedPets}
         onChange={handleChange}
         name="taggedPets"
+        className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500 mb-4"
       >
         {pets.map((pet) => (
           <option key={pet.PetID} value={pet.Name}>
@@ -115,18 +120,20 @@ const Post = () => {
         value={post.caption}
         onChange={handleChange}
         name="caption"
+        className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500 mb-4"
       />
-      <label>
-        Private?
+      <label className="flex items-center">
         <input
           id="checkbox"
           type="checkbox"
           checked={post.visibility}
           onChange={handleCheck}
           name="visibility"
+          className="mr-2"
         />
+        Private
       </label>
-      <button className="formButton" type="submit" onClick={handleClick}>
+      <button className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-300 mt-4" type="submit" onClick={handleClick}>
         Submit
       </button>
     </div>

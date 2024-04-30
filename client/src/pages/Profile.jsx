@@ -56,8 +56,8 @@ const Profile = () => {
                     return (
                         <>
                             <div className='h-[60%]'><img className='w-[100%] h-[100%] rounded-none' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU" /></div>
-                            <div className='h-[100%]  absolute top-0 p-16 flex justify-center items-center'> 
-                            <div className=' h-[150px] w-[150px] border-4 border-white overflow-hidden rounded-full'><img src={e.ProfilePictureURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_ISC9UU8aZv3dBBEAc23t4mzgdkPLVgpdk2ClCRapGw&s"} alt="" className='h-[100%] w-[100%]' /></div>
+                            <div className='h-[100%]  absolute top-0 p-16 flex justify-center items-center'>
+                                <div className=' h-[150px] w-[150px] border-4 border-white overflow-hidden rounded-full'><img src={e.ProfilePictureURL || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_ISC9UU8aZv3dBBEAc23t4mzgdkPLVgpdk2ClCRapGw&s"} alt="" className='h-[100%] w-[100%]' /></div>
                             </div>
                             <div className='mt-10   w-[300px] flex flex-col items-center'>
                                 <span className=' font-bold text-xl'>{e.UserName}</span>
@@ -76,6 +76,9 @@ const Profile = () => {
                                 <button className="edit"><Link to={`/edit/${e.UserID}`}>Edit Profile</Link></button>
                                 <button className="post mx-5">
                                     <Link to={`/post/${e.UserName}/${e.UserID}`}>Create Post</Link>
+                                </button>
+                                <button className="post mx-5 bg-blue-600 w-[150px] p-2 rounded-md text-white font-bold">
+                                    <Link to={`/pets`} className="text-white">Pets Profile</Link>
                                 </button>
                             </div>
                         </>
