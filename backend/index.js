@@ -7,7 +7,11 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 // import translate from 'node-google-translate-skidz';
-import translate from 'translate'
+// import translate from 'google-translate-api';
+import YandexTranslate from 'yandex-translate';
+const textToTranslate = 'Hello, how are you?';
+const translate = new YandexTranslate();
+
 
 const app = express();
 const saltRounds = 10;
@@ -38,19 +42,16 @@ db.connect((err) => {
 });
 
 app.post('/translate', async (req, res) => {
-  const { text, targetLanguage } = req.body;
 
-  try {
-    // Call the translation function from node-google-translate-skidz
-    translate.engine = "libre";
-    const translate_string = await translate(text, targetLanguage);
+  translate.translate(textToTranslate, { to: 'es' }, (err, res) => {
+    if (err) {
+      console.error('Error:', err);
+    } else {
+      console.log(res.text);
+      // res.json(res.text)
+    }
+  });
 
-    // Send back the translated text
-    res.json({ translate_string });
-  } catch (error) {
-    console.error('Error translating text:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
 });
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

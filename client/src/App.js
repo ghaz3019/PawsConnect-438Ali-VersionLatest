@@ -9,6 +9,7 @@ import Navbar from "./pages/Navbar";
 import Transfer from "./pages/Transfer";
 import Pets from "./pages/Pets";
 import "./style.css";
+import Translate from "./pages/Translate";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/translation" element={<Translate />} />
         <Route path="/pets" element={<Pets />} />
         <Route path="/Profile/:UserName" element={<Profile />} />
         <Route path="/Edit/:UserID" element={<Edit />} />
