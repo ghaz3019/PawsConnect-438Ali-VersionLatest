@@ -1,5 +1,5 @@
 PawsConnect
-By: Joshua Rivera, Israel Serrano, Adrian Villalpando, Muhammed Ali Ghazali
+By: Muhammed Ali Ghazali
 
 Use git clone <clone url> to clone repository.
 
